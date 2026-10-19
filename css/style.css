@@ -296,7 +296,7 @@ h1 em, h2 em { font-family: var(--sans); font-weight: 500; }
     font-size: .87rem;
   }
 
-  /* Горизонтальный скролл карточек */
+
   .price-grid {
     display: grid;
     grid-auto-flow: column;
@@ -327,7 +327,6 @@ h1 em, h2 em { font-family: var(--sans); font-weight: 500; }
     font-size: 1.8rem;
   }
 
-  /* Цена и ссылка всегда прижаты к нижнему краю */
   .price {
     margin-top: auto;
   }
