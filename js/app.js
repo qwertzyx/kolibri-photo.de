@@ -1,42 +1,54 @@
-document.addEventListener("DOMContentLoaded",()=>{
-  const navLinks=[...document.querySelectorAll(".nav-link")];
-  const sections=[...document.querySelectorAll("main section[id]")];
-  const year=document.querySelector("#current-year");
+(() => {
+  "use strict";
 
-  if(year){
-    year.textContent=new Date().getFullYear();
-  }
+  const year = document.getElementById("current-year");
+  if (year) year.textContent = String(new Date().getFullYear());
 
-  const updateActiveLink=()=>{
-    if(!sections.length) return;
+  const menuButton = document.querySelector(".menu-toggle");
+  const navigation = document.querySelector(".main-nav");
 
-    const scrollPosition=window.scrollY+window.innerHeight*.35;
-    let activeSection=sections[0];
+  if (menuButton && navigation) {
+    const closeMenu = () => {
+      menuButton.setAttribute("aria-expanded", "false");
+      navigation.classList.remove("is-open");
+      const label = menuButton.querySelector(".sr-only");
+      if (label) label.textContent = "Menü öffnen";
+    };
 
-    sections.forEach(section=>{
-      if(scrollPosition>=section.offsetTop){
-        activeSection=section;
+    menuButton.addEventListener("click", () => {
+      const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+      menuButton.setAttribute("aria-expanded", String(!isOpen));
+      navigation.classList.toggle("is-open", !isOpen);
+      const label = menuButton.querySelector(".sr-only");
+      if (label) label.textContent = isOpen ? "Menü öffnen" : "Menü schließen";
+    });
+
+    navigation.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeMenu();
+        menuButton.focus();
       }
     });
+  }
 
-    navLinks.forEach(link=>{
-      const target=link.getAttribute("href");
-      link.classList.toggle("is-active",target===`#${activeSection.id}`);
-    });
-  };
-
-  let scrollTicking=false;
-
-  window.addEventListener("scroll",()=>{
-    if(scrollTicking) return;
-
-    window.requestAnimationFrame(()=>{
-      updateActiveLink();
-      scrollTicking=false;
-    });
-
-    scrollTicking=true;
-  },{passive:true});
-
-  updateActiveLink();
-});
+  const sections = [...document.querySelectorAll("main section[id]")];
+  const navLinks = [...document.querySelectorAll('.main-nav a[href^="#"]')];
+  if ("IntersectionObserver" in window && sections.length && navLinks.length) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        navLinks.forEach((link) => {
+          const active = link.getAttribute("href") === `#${entry.target.id}`;
+          link.classList.toggle("is-active", active);
+          if (active) link.setAttribute("aria-current", "location");
+          else link.removeAttribute("aria-current");
+        });
+      });
+    }, { rootMargin: "-35% 0px -55% 0px", threshold: 0 });
+    sections.forEach((section) => observer.observe(section));
+  }
+})();
