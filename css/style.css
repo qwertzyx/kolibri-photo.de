@@ -101,7 +101,7 @@ h1 em, h2 em { font-family: var(--sans); font-weight: 500; }
 .location-note { color: #cfcdc9; }
 .price { display: flex; flex-wrap: wrap; align-items: baseline; gap: .55rem; margin: auto 0 .8rem; padding-top: 1rem; }
 .price-highlight { color: var(--accent-strong); font-size: clamp(1.65rem, 2.2vw, 2.15rem); font-weight: 700; letter-spacing: -.05em; }
-.price-description { color: var(--muted); font-size: .72rem; }
+.price-description { color: var(--muted); font-size: 1.2rem; }
 .card-link { display: flex; justify-content: space-between; align-items: center; gap: .7rem; min-height: 3.2rem; margin-top: .8rem; padding: .85rem 1rem; border: 1px solid var(--accent); border-radius: 10px; color: #141414; background: var(--accent); font: 600 .92rem/1.4 var(--sans); transition: background .2s, color .2s; }
 .card-link:hover { color: var(--ink); background: transparent; }
 .card-link span { transition: transform .2s; }
