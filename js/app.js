@@ -35,6 +35,43 @@
     });
   }
 
+  const contactForm = document.querySelector(".contact-form");
+  if (contactForm) {
+    const status = contactForm.querySelector(".form-status");
+    const submitButton = contactForm.querySelector(".contact-submit");
+
+    const showStatus = (text, type) => {
+      status.textContent = text;
+      status.dataset.type = type;
+    };
+
+    contactForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      submitButton.disabled = true;
+      showStatus("Wird gesendet …", "pending");
+
+      try {
+        const response = await fetch(contactForm.action, {
+          method: "POST",
+          headers: { Accept: "application/json" },
+          body: new FormData(contactForm)
+        });
+        const result = await response.json();
+
+        if (response.ok && result.success) {
+          contactForm.reset();
+          showStatus("Danke! Deine Nachricht ist angekommen. Ich melde mich bald bei dir.", "success");
+        } else {
+          showStatus("Das hat leider nicht geklappt. Bitte versuch es später noch einmal.", "error");
+        }
+      } catch {
+        showStatus("Keine Verbindung. Bitte prüfe dein Internet und versuch es noch einmal.", "error");
+      } finally {
+        submitButton.disabled = false;
+      }
+    });
+  }
+
   const sections = [...document.querySelectorAll("main section[id]")];
   const navLinks = [...document.querySelectorAll('.main-nav a[href^="#"]')];
   if ("IntersectionObserver" in window && sections.length && navLinks.length) {

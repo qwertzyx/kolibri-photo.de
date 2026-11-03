@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#171512">
+  <meta name="theme-color" content="#141414">
   <meta name="description" content="Kolibri Photo – natürliche Portraitfotografie in Straubing und Regensburg.">
   <title>Kolibri Photo | Fotografie</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-  <script src="js/app.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Source+Sans+3:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=2">
+  <script src="js/app.js?v=2" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
   <header class="site-header">
     <a class="brand" href="#startseite" aria-label="Kolibri Photo – Startseite">
-      <span class="brand-name">Kolibri Photo</span>
+      <span class="brand-name">Liliya Seifert</span>
     </a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
       <span class="menu-toggle-lines" aria-hidden="true"></span>
@@ -37,16 +37,14 @@
         <img class="hero-image" src="./images/hero-fotografie.png" alt="" fetchpriority="high">
       </div>
       <div class="hero-overlay" aria-hidden="true"></div>
-      <div class="hero-content glass-panel">
-        <p class="eyebrow">Fotografie · Straubing &amp; Umgebung</p>
-        <h1 id="hero-title">Kolibri<br>Photo.</h1>
-        <a class="hero-link" href="#preise"><span>Pakete entdecken</span><span class="arrow" aria-hidden="true">↗</span></a>
+      <div class="hero-content">
+        <h1 id="hero-title">Kolibri</h1>
+        <em class="hero-subtitle">Photographer</em>
       </div>
     </section>
 
     <section id="ueber-mich" class="about section-shell section-space" aria-labelledby="about-title">
       <div class="section-heading">
-        <p class="eyebrow">Die Person hinter der Kamera</p>
         <h2 id="about-title">Über mich.</h2>
       </div>
       <div class="about-card glass-panel">
@@ -67,7 +65,7 @@
 
     <section id="preise" class="prices section-shell section-space" aria-labelledby="preise-title">
       <div class="section-heading section-heading-split">
-        <div><p class="eyebrow">Finde dein Paket</p><h2 id="preise-title">Preise &amp; Leistungen.</h2></div>
+        <div><h2 id="preise-title">Preise &amp; Leistungen.</h2></div>
       </div>
       <div class="price-grid">
         <article class="price-card glass-panel">
@@ -98,9 +96,9 @@
         <article class="price-card glass-panel">
           <h3>FÜREINANDER</h3>
           <p class="price-detail">Für Paare, die keine große Crew brauchen, sondern echte Erinnerungen.</p>
-          <ul class="feature-list"><li>Fotografie inklusive Retusche und Farblook</li><li>Private Online-Galerie zur Auswahl und zum Download</li><li>Vorgespräch, Moodboard und Location-Hilfe</li><li>Fotografische Begleitung allein, ohne Video</li></ul>
+          <ul class="feature-list"><li>150-250 retuschierte Fotos inklusive Farblook</li><li>Private Online-Galerie zur Auswahl und zum Download</li><li>Vorgespräch, Moodboard und Location-Hilfe</li><li>Fotografische Begleitung allein, ohne Video</li></ul>
           <p class="price-note">Die genaue Dauer und der Leistungsumfang sollten vor der Veröffentlichung bestätigt werden.</p>
-          <p class="price"><span class="price-highlight">Preis auf Anfrage</span></p>
+          <p class="price"><span class="price-highlight">ab 700 €</span><span class="price-description">4 Std.</span></p>
           <a href="#kontakt" class="card-link" aria-label="FÜREINANDER anfragen">Paket anfragen <span aria-hidden="true">↗</span></a>
         </article>
       </div>
@@ -108,7 +106,7 @@
 
     <section id="ablauf" class="ablauf section-shell section-space" aria-labelledby="ablauf-title">
       <div class="section-heading section-heading-split">
-        <div><p class="eyebrow">Schritt für Schritt</p><h2 id="ablauf-title">So läuft ein Shooting ab.</h2></div>
+        <div><h2 id="ablauf-title">So läuft ein Shooting ab.</h2></div>
       </div>
       <div class="ablauf-card glass-panel">
         <ol class="ablauf-list">
@@ -126,17 +124,22 @@
 
     <section id="kontakt" class="contact section-shell section-space" aria-labelledby="kontakt-title">
       <div class="section-heading section-heading-split">
-        <div><p class="eyebrow">Lass uns sprechen</p><h2 id="kontakt-title">Dein Shooting beginnt hier.</h2></div>
+        <div><h2 id="kontakt-title">Dein Shooting beginnt hier.</h2></div>
       </div>
       <div class="contact-card glass-panel">
         <div class="contact-copy">
           <p class="contact-lead">Erzähl mir ein bisschen von dir und davon, was du dir vorstellst.</p>
-          <form class="contact-form" action="mailto:vgerbert24@gmail.com" method="post" enctype="text/plain">
+          <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="fe496dbb-b754-4beb-85a0-258ad6737fbb">
+            <input type="hidden" name="subject" value="Neue Anfrage über kolibri-photo.de">
+            <input type="hidden" name="from_name" value="Kolibri Photo Website">
+            <input type="checkbox" name="botcheck" class="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
             <label for="contact-email">Deine E-Mail-Adresse</label>
             <input id="contact-email" name="email" type="email" placeholder="name@example.de" autocomplete="email" required>
             <label for="contact-message">Deine Nachricht</label>
             <textarea id="contact-message" name="message" rows="4" placeholder="Was hast du dir für dein Shooting vorgestellt?" required></textarea>
-            <button class="contact-submit" type="submit">E-Mail vorbereiten <span aria-hidden="true">↗</span></button>
+            <button class="contact-submit" type="submit">Nachricht senden <span aria-hidden="true">↗</span></button>
+            <p class="form-status" role="status" aria-live="polite"></p>
           </form>
         </div>
         <div class="contact-social">
